@@ -1,0 +1,16 @@
+﻿
+@{
+    Layout = null;
+}
+    <div class="col-2 top_nav_right text-center mt-sm-0 mt-2">
+        <div class="wthreecartaits wthreecartaits2 cart cart box_1">
+                <button class="btn w3view-cart" type="submit" name="submit" value="">
+                    <a class="fas fa-cart-arrow-down" style="color:#fff" href="@Url.Action("XemGiohang","Giohang")"></a>
+                </button>
+                <div>
+                    <div>@ViewBag.TongSoLuong item</div>
+                    <div style="color:#0c8ae4">$ @ViewBag.TongTien.ToString("#,##")</div>
+                </div>
+            
+        </div>
+    </div>

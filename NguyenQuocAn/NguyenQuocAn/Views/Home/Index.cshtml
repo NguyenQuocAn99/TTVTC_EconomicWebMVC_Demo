@@ -1,0 +1,32 @@
+﻿@using NguyenQuocAn.Models;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+@{ 
+    IEnumerable<SanPham> ListDTM = (IEnumerable<SanPham>)ViewBag.DTM;
+    IEnumerable<SanPham> ListLT = (IEnumerable<SanPham>)ViewBag.LT;
+    IEnumerable<SanPham> ListTL = (IEnumerable<SanPham>)ViewBag.TL;
+}
+    <div class="container_1">
+        <div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
+            <h3 class="heading-tittle text-center font-italic">New Brand Mobiles</h3>
+            <div class="row">
+                @Html.Partial("~/Views/Home/Sanphampartialview1.cshtml", ListDTM)
+            </div>
+        </div>
+        <div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
+            <h3 class="heading-tittle text-center font-italic">New Brand Tablet</h3>
+            <div class="row">
+                @Html.Partial("~/Views/Home/SanPhamPartialView3.cshtml", ListTL)
+            </div>
+        </div>
+        <div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
+            <h3 class="heading-tittle text-center font-italic">New Brand Laptop</h3>
+            <div class="row">
+                @Html.Partial("~/Views/Home/SanPhamPartialView2.cshtml", ListLT)
+            </div>
+        </div>
+
+    </div>
+

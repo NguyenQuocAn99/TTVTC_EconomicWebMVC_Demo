@@ -1,0 +1,73 @@
+﻿@using PagedList.Mvc
+@using NguyenQuocAn.Models
+@model PagedList.IPagedList<SanPham>
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "SearchProduct";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<div class="ads-grid py-sm-5 py-4">
+    <div class="container py-xl-4 py-lg-2">
+        <!-- tittle heading -->
+        @if (ViewBag.CheckFind == false)
+        {
+            <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
+                <span>N</span>ot found!
+            </h3>
+        }
+        else
+        {
+            <div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mt-4">
+                <div class="row">
+                    @foreach (var item in Model.OrderBy(n => n.TenSP))
+                    {
+                        <div class="col-md-4 product-men">
+                            <div class="men-pro-item simpleCart_shelfItem">
+                                <div class="men-thumb-item text-center">
+                                    <img src="@Url.Content("~/Content/images/"+item.HinhAnh)" alt="" class="img-fluid">
+                                    <div class="men-cart-pro">
+                                        <div class="inner-men-cart-pro">
+                                            <a href="@Url.Action("ChiTietSanPham","Product",new {@MaSP=item.MaSP})" class="link-product-add-cart">Quick View</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item-info-product text-center border-top mt-4">
+                                    <h4 class="pt-1">
+                                        <a href="@Url.Action("ChiTietSanPham","Product",new {@MaSP=item.MaSP})">@item.TenSP</a>
+                                    </h4>
+                                    <div class="info-product-price my-2">
+                                        <span class="item_price">@item.DonGIa</span>
+                                        <del>$260.00</del>
+                                    </div>
+                                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+
+                                        <fieldset>
+                                            <div class="button btn" style="background-color:#0c8ae4">
+                                                <a href="@Url.Action("ThemGiohang","Giohang",new{@MaSP=item.MaSP, @strURL=Request.Url.ToString()})" name="submit" value="Add to cart" class="button btn" style="color:#fff; display:block;">ADD TO CART</a>
+                                            </div>
+                                        </fieldset>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+            <div class="dlink" style="width:100%; color:#0c8ae4; padding-top:10px; display:flex; font-size:large;">
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+                <div style="margin:auto;">
+                    @Html.PagedListPager(Model, page => Url.Action("SearchProduct", new { page = page, @keySearch=ViewBag.key}))
+                </div>
+            </div>
+        }
+        <!-- //tittle heading -->
+
+    </div>
+
+</div>
+

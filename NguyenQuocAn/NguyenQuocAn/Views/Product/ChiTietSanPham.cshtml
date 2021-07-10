@@ -1,0 +1,47 @@
+﻿@using NguyenQuocAn.Models
+
+@{
+    ViewBag.Title = "ChiTietSanPham";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
+}
+@{
+    SanPham temp = (SanPham)ViewBag.MaSP;
+}
+    <div class="banner-bootom-w3-agileits py-5">
+        <div class="container py-xl-4 py-lg-2">
+            <!-- tittle heading -->
+            <!-- //tittle heading -->
+            <div class="row">
+                <div class="col-lg-5 col-md-8 single-right-left ">
+                    <div class="thumb-image" style="display:flex;">
+                        <img src="@Url.Content("~/Content/images/"+temp.HinhAnh)" data-imagezoom="true" class="img-fluid" alt="" draggable="false" style="margin:auto">
+                    </div>
+                </div>
+
+                <div class="col-lg-7 single-right-left simpleCart_shelfItem">
+                    <h3 class="mb-3">@temp.TenSP</h3>
+                    <p class="mb-3">
+                        <span class="item_price">@temp.DonGIa </span>vnd
+                        <del class="mx-2 font-weight-light">$280.00</del>
+                        <label>Free delivery</label>
+                    </p>
+                    <div class="single-infoagile" style="width:50%">
+                        @temp.MoTa
+                    </div>
+                 
+                    <div class="occasion-cart" style="margin-top:10px;">
+                        <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                            <form action="#" method="post">
+                                <fieldset>
+                                    <div class="button btn" style="background-color:#0c8ae4">
+                                        <a href="@Url.Action("ThemGiohang","Giohang",new{@MaSP=temp.MaSP, @strURL=Request.Url.ToString()})" name="submit" value="Add to cart" class="button btn" style="color:#fff; display:block;">ADD TO CART</a>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

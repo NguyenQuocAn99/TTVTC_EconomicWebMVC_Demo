@@ -1,0 +1,64 @@
+﻿@using NguyenQuocAn.Models;
+@model IEnumerable<SanPham>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+    <div class="container py-xl-4 py-lg-2">
+        <!-- tittle heading -->
+        <!-- //tittle heading -->
+        <div class="checkout-right">
+            <div class="table-responsive">
+                <table class="timetable_sub">
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Product</th>
+                            <th>Quality</th>
+                            <th>Product Name</th>
+
+                            <th>Price</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{int i = 0;}
+                        @foreach (var item in Model)
+                        {
+
+                            <tr class="rem1">
+                                <td class="invert">@item.MaSP</td>
+                                <td class="invert-image">
+                                    <a href="single.html">
+                                        <img src="@Url.Content("~/Content/images/"+item.HinhAnh)" alt=" " class="img-responsive">
+                                    </a>
+                                </td>
+                                <td class="invert">
+                                    <div class="quantity">
+                                        <div class="quantity-select">
+                                            <a class="entry value-minus" href="@Url.Action("SuaHang","QuanLySanPham",new { @MaSP = item.MaSP, @strURL = Request.Url.ToString(), @sw = false })">&nbsp;</a>
+                                            <div class="entry value">
+                                                <span>@item.SoLuongTon</span>
+                                            </div>
+                                            <a class="entry value-plus active" href="@Url.Action("SuaHang","QuanLySanPham",new { @MaSP = item.MaSP, @strURL = Request.Url.ToString(), @sw = true })">&nbsp;</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="invert">@item.TenSP</td>
+                                <td class="invert">@item.DonGIa</td>
+                                <td class="invert">
+                                    <div class="rem">
+                                        <a class="close1" href="@Url.Action("XoaHang","Giohang",new{@MaSP=item.MaSP, @strURL=Request.Url.ToString()})"> </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            i++;
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+

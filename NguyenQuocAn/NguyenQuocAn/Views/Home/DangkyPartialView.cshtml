@@ -1,0 +1,54 @@
+﻿@using NguyenQuocAn.Models
+@model ThanhVien
+@using (Ajax.BeginForm("DangKyThanhVien", "Home", new AjaxOptions { UpdateTargetId = "thongbaoregister", InsertionMode = InsertionMode.Replace }))
+{
+        @Html.AntiForgeryToken()
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.ValidationMessageFor(model => model.HoTen, "", new { @style = "color:red;" })
+        <div class="form-group form-group1">
+            <label class="col-form-label">Yourname</label>
+            @Html.TextBoxFor(model => model.HoTen, new { @autocomplete = "off" })
+
+        </div>
+
+        <div class="form-group form-group1">
+            <label class="col-form-label">Address</label>
+            @Html.TextBoxFor(model => model.DiaChi)
+        </div>
+        @Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @style = "color:red;" })
+        <div class="form-group form-group1">
+            <label class="col-form-label">Phone</label>
+            @Html.TextBoxFor(model => model.SoDienThoai, new { @autocomplete = "off" })
+        </div>
+        @Html.ValidationMessageFor(model => model.TaiKhoan, "", new { @style = "color:red;" })
+        <div class="form-group form-group1">
+            <label class="col-form-label">Username</label>
+            @Html.TextBoxFor(model => model.TaiKhoan, new { @autocomplete = "off" })
+        </div>
+        @Html.ValidationMessageFor(model => model.Email, "", new { @style = "color:red;" })
+        <div class="form-group form-group1">
+            <label class="col-form-label">Email</label>
+            @Html.TextBoxFor(model => model.Email, new { @autocomplete = "off" })
+        </div>
+        @Html.ValidationMessageFor(model => model.MatKhau, "", new { @style = "color:red;" })
+        <div class="form-group form-group1">
+            <label class="col-form-label">Password</label>
+            @Html.TextBoxFor(model => model.MatKhau, new { @autocomplete = "off" })
+        </div>
+        <div class="form-group form-group1">
+            <label class="col-form-label">Confirm Password</label>
+            <input type="password" name="confirmMK" autocomplete="off" />
+        </div>
+        <div style="color:red;" id="thongbaoregister"></div>
+        <div class="right-w3l">
+            <input type="submit" class="form-control" value="Register">
+        </div>
+        <div class="sub-w3l">
+            <div class="custom-control custom-checkbox mr-sm-2">
+                <input type="checkbox" class="custom-control-input" id="customControlAutosizing2">
+                <label class="custom-control-label" for="customControlAutosizing2">I Accept to the Terms &amp; Conditions</label>
+            </div>
+        </div>
+}
+

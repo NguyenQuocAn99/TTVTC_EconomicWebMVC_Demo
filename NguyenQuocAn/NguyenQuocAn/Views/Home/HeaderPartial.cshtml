@@ -1,0 +1,73 @@
+﻿@using NguyenQuocAn.Models
+<div class="row main-top-w3l py-2">
+    <div class="col-lg-4 header-most-top">
+        <p class="text-white text-lg-left text-center">
+            @*@{
+                string tem = (string)Session["language"].ToString();
+                switch (tem)
+                {
+                    case "En":
+                    <span>Offer Zone Top Deals &amp; Discounts</span>
+                        break;
+                    case "Vi":
+                    <span>Ưu Đãi &amp; Giảm Giá</span>
+                        break;
+                    default:
+                    <span>default Offer Zone Top Deals &amp; Discounts @tem.ToString()  </span>
+                        break;
+                }
+                }*@
+            <i class="fas fa-shopping-cart ml-1"></i>
+        </p>
+    </div>
+    <div class="col-lg-8 header-right mt-lg-0 mt-2">
+        <!-- header lists -->
+        <ul>
+            <li class="text-center border-right text-white">
+                <a class="play-icon popup-with-zoom-anim text-white" href="#small-dialog1">
+                    <i class="fas fa-map-marker mr-2"></i>Select Location
+                </a>
+            </li>
+            <li class="text-center border-right text-white">
+                <a href="#" data-toggle="modal" class="text-white">
+                    <i class="fas fa-truck mr-2"></i>Track Order
+                </a>
+            </li>
+            @*<li class="text-center border-right text-white">
+                <a class="mr-2 text-white" href="@Url.Action("SwLanguage", "Home", new {@strURL=Request.Url.ToString(), @swToLanguage="En" })"><img src="https://vss.vnpt.vn/Content/images/flag_english.png" /></a>
+                <a class="mr-2 text-white" href="@Url.Action("SwLanguage", "Home", new {@strURL=Request.Url.ToString(), @swToLanguage="Vi" })"><img src="https://vss.vnpt.vn/Content/images/flag_vietnam.png" /></a>
+            </li>*@
+            @if (Session["dangnhap"] != null)
+            {
+                ThanhVien tv = (ThanhVien)Session["dangnhap"];
+                if (tv.TaiKhoan == "admin" && tv.MatKhau == "admin")
+                {
+                    <li class="text-center border-right text-white">
+                        <a class="fas fa-sign-out-alt mr-2 text-white" href="@Url.Action("Index", "QuanLySanPham", new {@strURL=Request.Url.ToString() })">dashboard</a>
+                    </li>
+                }
+                <li class="text-center border-right text-white">
+                    <i class="fas fa-user-circle"></i> @tv.HoTen
+                </li>
+                <li class="text-center text-white">
+                    <a class="fas fa-sign-out-alt mr-2 text-white" href="@Url.Action("DangXuat", "Home", new {@strURL=Request.Url.ToString() })">Log out</a>
+                </li>
+            }
+            else
+            {
+                <li class="text-center border-right text-white">
+                    <a href="#" data-toggle="modal" data-target="#exampleModal" class="text-white">
+                        <i class="fas fa-sign-in-alt mr-2"></i> Log In
+                    </a>
+                </li>
+                <li class="text-center text-white">
+                    <a href="#" data-toggle="modal" data-target="#exampleModal2" class="text-white">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Register
+                    </a>
+                </li>
+            }
+
+        </ul>
+        <!-- //header lists -->
+    </div>
+</div>
